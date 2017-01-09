@@ -9,6 +9,8 @@
 import Foundation
 import Himotoki
 
+private let fileName = "Entitlementfile.json"
+
 private func main(arguments: [String]) {
     let arguments = arguments.dropFirst()
     guard let path = arguments.first, let scheme = arguments.last else {
@@ -21,11 +23,11 @@ private func main(arguments: [String]) {
         rootKeyPath: [scheme]
     )
 
-    print(entitlement.environment.rawValue)
+    Builder.build(entitlement: entitlement, path: path)
 }
 
 private func parse(path: String) -> Any {
-    let raw = try! String(contentsOfFile: path)
+    let raw = try! String(contentsOfFile: path + fileName)
     let json = try! JSONSerialization.jsonObject(
         with: raw.data(using: .utf8)!,
         options: []
