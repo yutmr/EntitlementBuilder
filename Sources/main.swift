@@ -8,7 +8,6 @@
 
 import Foundation
 import Himotoki
-import SwiftyJSON
 
 private func main(arguments: [String]) {
     let arguments = arguments.dropFirst()
